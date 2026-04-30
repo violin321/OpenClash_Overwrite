@@ -33,13 +33,13 @@ jobs:
             exit 1;
           }
 
-      - name: Regenerate IPv6 config
+      - name: Regenerate IPv6 configs
         run: |
           python3 scripts/generate-ipv6-conf.py
 
       - name: Commit and push if changed
         run: |
-          git add Overwrite/Overwrite-smart-bypass-LGBM-ipv6.conf scripts/generate-ipv6-conf.py .github/workflows/sync-upstream-ipv6.yml
+          git add Overwrite/Overwrite-smart-bypass-LGBM-ipv6.conf Overwrite/Overwrite-smart-bypass-ipv6.conf scripts/generate-ipv6-conf.py .github/workflows/sync-upstream-ipv6.yml docs/ipv6-variants.md
           if git diff --cached --quiet; then
             echo 'No changes to commit'
             exit 0
