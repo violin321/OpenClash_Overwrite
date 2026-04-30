@@ -119,6 +119,24 @@ https://raw.githubusercontent.com/Giveupmoon/OpenClash_Overwrite/refs/heads/main
 https://raw.githubusercontent.com/Giveupmoon/OpenClash_Overwrite/refs/heads/main/Overwrite/Overwrite-smart-bypass.conf
 ```
 
+### 1️⃣ Fork 额外提供：旁路由 IPv6 版
+
+> 本 fork：`violin321/OpenClash_Overwrite` 在保留上游自动同步的基础上，额外提供了 **旁路由 IPv6 版** 覆写文件。
+
+#### 🔹 旁路由用户 - Smart-LGBM（IPv6 版）
+
+```bash
+https://raw.githubusercontent.com/violin321/OpenClash_Overwrite/main/Overwrite/Overwrite-smart-bypass-LGBM-ipv6.conf
+```
+
+#### 🔹 旁路由用户 - Smart（默认模型 + 数据收集，IPv6 版）
+
+```bash
+https://raw.githubusercontent.com/violin321/OpenClash_Overwrite/main/Overwrite/Overwrite-smart-bypass-ipv6.conf
+```
+
+> 说明文档：`docs/ipv6-variants.md`
+
 ---
 
 ### 2️⃣ 配置环境变量
