@@ -1,9 +1,9 @@
-name: Sync upstream and refresh IPv6 patch
+name: Sync upstream and refresh custom artifacts
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: '23 2 * * *'
+    - cron: '27 2 * * *'
 
 permissions:
   contents: write
@@ -33,16 +33,26 @@ jobs:
             exit 1;
           }
 
-      - name: Regenerate IPv6 configs
+      - name: Regenerate custom overwrite files
         run: |
           python3 scripts/generate-ipv6-conf.py
+          ./scripts/generate-meta-overwrite.sh
+          python3 scripts/update-readme-custom-section.py
 
       - name: Commit and push if changed
         run: |
-          git add Overwrite/Overwrite-smart-bypass-LGBM-ipv6.conf Overwrite/Overwrite-smart-bypass-ipv6.conf scripts/generate-ipv6-conf.py .github/workflows/sync-upstream-ipv6.yml docs/ipv6-variants.md
+          git add README.md \
+            Overwrite/Overwrite-meta.conf \
+            Overwrite/Overwrite-smart-bypass-ipv6.conf \
+            Overwrite/Overwrite-smart-bypass-LGBM-ipv6.conf \
+            scripts/generate-ipv6-conf.py \
+            scripts/generate-meta-overwrite.sh \
+            scripts/update-readme-custom-section.py \
+            .github/workflows/sync-upstream-custom.yml
+          git rm -f .github/workflows/sync-upstream-ipv6.yml .github/workflows/sync-upstream-meta.yml || true
           if git diff --cached --quiet; then
             echo 'No changes to commit'
             exit 0
           fi
-          git commit -m 'Sync upstream and refresh IPv6 patch'
+          git commit -m 'Sync upstream and refresh custom artifacts'
           git push origin main

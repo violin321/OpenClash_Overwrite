@@ -71,12 +71,6 @@
 https://raw.githubusercontent.com/Giveupmoon/OpenClash_Overwrite/refs/heads/main/Overwrite/Overwrite.conf
 ```
 
-#### 🔹 主路由用户 - Url-test（Meta 内核，不使用 Smart）
-
-```bash
-https://raw.githubusercontent.com/violin321/OpenClash_Overwrite/main/Overwrite/Overwrite-meta.conf
-```
-
 #### 🔹 主路由用户 - Smart-LGBM
 
 ```bash
@@ -125,14 +119,16 @@ https://raw.githubusercontent.com/Giveupmoon/OpenClash_Overwrite/refs/heads/main
 https://raw.githubusercontent.com/Giveupmoon/OpenClash_Overwrite/refs/heads/main/Overwrite/Overwrite-smart-bypass.conf
 ```
 
-### 1️⃣ Fork 额外提供：旁路由 IPv6 版
+<!-- violin321-custom:start -->
+### 1️⃣ violin321 fork 额外提供
 
-> 本 fork：`violin321/OpenClash_Overwrite` 在保留上游自动同步的基础上，额外提供了 **旁路由 IPv6 版** 覆写文件。
+> 以下 3 个覆写文件由 **violin321/OpenClash_Overwrite** 额外提供，用于补充上游默认版本。
 
-| 场景 | noIPv6 / 上游默认 | IPv6 / 本 fork 额外提供 |
-|---|---|---|
-| 旁路由 Smart-LGBM | `Overwrite-smart-bypass-LGBM.conf` | `Overwrite-smart-bypass-LGBM-ipv6.conf` |
-| 旁路由 Smart（默认模型 + 数据收集） | `Overwrite-smart-bypass.conf` | `Overwrite-smart-bypass-ipv6.conf` |
+#### 🔹 主路由用户 - Url-test（Meta 内核，不使用 Smart）
+
+```bash
+https://raw.githubusercontent.com/violin321/OpenClash_Overwrite/main/Overwrite/Overwrite-meta.conf
+```
 
 #### 🔹 旁路由用户 - Smart-LGBM（IPv6 版）
 
@@ -145,10 +141,7 @@ https://raw.githubusercontent.com/violin321/OpenClash_Overwrite/main/Overwrite/O
 ```bash
 https://raw.githubusercontent.com/violin321/OpenClash_Overwrite/main/Overwrite/Overwrite-smart-bypass-ipv6.conf
 ```
-
-> 说明文档：`docs/ipv6-variants.md`
-
----
+<!-- violin321-custom:end -->
 
 ### 2️⃣ 配置环境变量
 
@@ -177,4 +170,4 @@ EN_KEY=你的机场订阅链接
 
 ## 📂 项目来源
 
-✨ **如果本项目对你有帮助，请点个 Star 支持一下！有配置错误之类的相关的问题，欢迎issue交流如您有更好的建议和设置，欢迎pr。**  
+✨ **如果本项目对你有帮助，请点个 Star 支持一下！有配置错误之类的相关的问题，欢迎issue交流如您有更好的建议和设置，欢迎pr。**
