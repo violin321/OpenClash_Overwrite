@@ -71,6 +71,12 @@
 https://raw.githubusercontent.com/Giveupmoon/OpenClash_Overwrite/refs/heads/main/Overwrite/Overwrite.conf
 ```
 
+#### 🔹 主路由用户 - Url-test（Meta 内核，不使用 Smart）
+
+```bash
+https://raw.githubusercontent.com/violin321/OpenClash_Overwrite/main/Overwrite/Overwrite-meta.conf
+```
+
 #### 🔹 主路由用户 - Smart-LGBM
 
 ```bash

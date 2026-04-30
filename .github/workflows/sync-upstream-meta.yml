@@ -1,0 +1,48 @@
+name: Sync upstream and refresh Meta overwrite
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '31 2 * * *'
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout fork
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configure git
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+
+      - name: Sync upstream
+        run: |
+          git remote add upstream https://github.com/Giveupmoon/OpenClash_Overwrite.git || true
+          git fetch upstream main
+          git checkout main
+          git merge --no-edit upstream/main || {
+            echo 'Merge conflict while syncing upstream';
+            git merge --abort || true;
+            exit 1;
+          }
+
+      - name: Regenerate Meta overwrite
+        run: |
+          ./scripts/generate-meta-overwrite.sh
+
+      - name: Commit and push if changed
+        run: |
+          git add Overwrite/Overwrite-meta.conf scripts/generate-meta-overwrite.sh .github/workflows/sync-upstream-meta.yml README.md
+          if git diff --cached --quiet; then
+            echo 'No changes to commit'
+            exit 0
+          fi
+          git commit -m 'Sync upstream and refresh Meta overwrite'
+          git push origin main
