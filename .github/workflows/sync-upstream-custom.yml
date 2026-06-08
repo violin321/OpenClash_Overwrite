@@ -49,10 +49,20 @@ jobs:
             scripts/generate-meta-overwrite.sh \
             scripts/update-readme-custom-section.py \
             .github/workflows/sync-upstream-custom.yml
-          git rm -f .github/workflows/sync-upstream-ipv6.yml .github/workflows/sync-upstream-meta.yml || true
+          for obsolete_workflow in \
+            .github/workflows/sync-upstream-ipv6.yml \
+            .github/workflows/sync-upstream-meta.yml; do
+            if [ -e "$obsolete_workflow" ]; then
+              git rm -f "$obsolete_workflow"
+            fi
+          done
           if git diff --cached --quiet; then
-            echo 'No changes to commit'
-            exit 0
+            echo 'No regenerated custom artifact changes to commit'
+          else
+            git commit -m 'Sync upstream and refresh custom artifacts'
           fi
-          git commit -m 'Sync upstream and refresh custom artifacts'
-          git push origin main
+          if git diff --quiet origin/main HEAD; then
+            echo 'Local main already matches origin/main; nothing to push'
+          else
+            git push origin main
+          fi
